@@ -1,0 +1,18 @@
+Analisis Kompleksitas Algoritma
+Waktu Kompleksitas:
+Fungsi hitungPangkatDua melakukan iterasi sebanyak n kali, sehingga waktu kompleksitasnya adalah O(n).
+Ruang Kompleksitas:
+Program ini hanya menggunakan variabel lokal yang memerlukan ruang tetap, sehingga ruang kompleksitasnya adalah O(1).
+
+
+Simulasi Perhitungan
+Mari kita lakukan simulasi perhitungan untuk bilangan 5.
+
+Pengguna memasukkan angka 5.
+Dalam fungsi hitungPangkatDua, prosesnya adalah:
+Iterasi 1: hasil = 0 + 5 = 5
+Iterasi 2: hasil = 5 + 5 = 10
+Iterasi 3: hasil = 10 + 5 = 15
+Iterasi 4: hasil = 15 + 5 = 20
+Iterasi 5: hasil = 20 + 5 = 25
+Hasil akhir adalah 25, yang merupakan hasil dari 5^2.
