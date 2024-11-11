@@ -1,0 +1,50 @@
+import java.util.Scanner;
+
+public class CoinChange {
+
+    // Fungsi untuk menghitung jumlah koin minimum yang diperlukan
+    public static int minCoins(int target, int[] coins) {
+        // Membuat array untuk menyimpan jumlah koin minimum untuk setiap nilai
+        int[] dp = new int[target + 1];
+        
+        // Inisialisasi dengan nilai yang sangat besar (seperti tak terhingga)
+        // karena kita mencari nilai minimum
+        for (int i = 1; i <= target; i++) {
+            dp[i] = Integer.MAX_VALUE;
+        }
+
+        // Basis kasus: untuk 0, jumlah koin yang diperlukan adalah 0
+        dp[0] = 0;
+
+        // Menyusun solusi secara bottom-up
+        for (int i = 1; i <= target; i++) {
+            for (int coin : coins) {
+                if (i - coin >= 0 && dp[i - coin] != Integer.MAX_VALUE) {
+                    dp[i] = Math.min(dp[i], dp[i - coin] + 1);
+                }
+            }
+        }
+
+        // Jika dp[target] masih Integer.MAX_VALUE, artinya tidak mungkin mencapai target
+        return dp[target] == Integer.MAX_VALUE ? -1 : dp[target];
+    }
+
+    public static void main(String[] args) {
+        // Koin yang tersedia
+        int[] coins = {2, 3, 5, 10, 15};
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Masukkan jumlah yang ingin dicapai: ");
+        int target = scanner.nextInt();
+
+        int result = minCoins(target, coins);
+        
+        if (result == -1) {
+            System.out.println("Tidak mungkin mencapai jumlah tersebut dengan koin yang tersedia.");
+        } else {
+            System.out.println("Jumlah koin minimum yang dibutuhkan: " + result);
+        }
+
+        scanner.close();
+    }
+}
